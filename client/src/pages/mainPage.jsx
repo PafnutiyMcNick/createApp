@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext } from "react"
 import { getAll } from "../api";
 import Game from "../components/game";
 
 
 const MainPage = () => {
+    const TurnCounterContext = createContext(0);
     // const [hello, setHello] = useState('');
 
     // useEffect(() => {
@@ -14,7 +15,7 @@ const MainPage = () => {
     // }, '')
 
 
-    return(
+    return (
         <div>
           <Game />
         </div>
