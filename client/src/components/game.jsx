@@ -22,10 +22,19 @@ const Game = () => {
     const [cards, setCards] = useState(generateCards());
     const [flippedIndices, setFlippedIndices] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
+    const [turnCounter, setTurnCounter] = useState(0);
+
+    const resetGame = () => {
+      setCards(generateCards());
+      setFlippedIndices([]);
+      setMatchedPairs([]);
+      setTurnCounter(0);
+    };
 
     useEffect(() => {
         if (flippedIndices.length === 2) {
             const [firstIndex, secondIndex] = flippedIndices;
+            setTurnCounter(turnCounter + 1)
             if (cards[firstIndex] === cards[secondIndex]) {
                 setMatchedPairs((prev) => [...prev, cards[firstIndex]]);
             }
@@ -53,10 +62,14 @@ const Game = () => {
       };
     
       return (
-        <div className="Game">
+        <div>
+          <h2>Ходов: {turnCounter}</h2>
+          <button onClick={resetGame}>Перезапустить игру</button>
+          <div className="Game">
           <div className="card-container">
             {cards.map((symbol, index) => renderCard(symbol, index))}
           </div>
+        </div>
         </div>
       );
     };
