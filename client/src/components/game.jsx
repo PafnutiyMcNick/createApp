@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './game.css'
+import WinScreen from "./WinScreen";
 import Navbar from "../components/navbar";
 
 const generateCards = () => {
@@ -24,6 +25,7 @@ const Game = () => {
     const [flippedIndices, setFlippedIndices] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
     const [turnCounter, setTurnCounter] = useState(0);
+    const [winOpened, setWinOpened] = useState(false)
 
     const resetGame = () => {
       setCards(generateCards());
@@ -43,6 +45,13 @@ const Game = () => {
         }
     }, [flippedIndices, cards]);
 
+    //вызов экрана победы
+    useEffect(() => {
+        if (matchedPairs.length === 8) {
+            setWinOpened(true)
+        }
+    }, [matchedPairs])
+
     const handleCardClick = (index) => {
         if (flippedIndices.length < 2 && !flippedIndices.includes(index)) {
             setFlippedIndices((prev) => [...prev, index]);
@@ -61,6 +70,14 @@ const Game = () => {
           </div>
         );
       };
+
+    //рестарт
+    const restartGame = () => {
+        setMatchedPairs([]);
+        setCards(shuffleArray);
+        cards.map((symbol, index) => renderCard(symbol, index));
+        setWinOpened(false)
+    }
     
       return (
         <div>
@@ -70,7 +87,7 @@ const Game = () => {
           <div className="card-container">
             {cards.map((symbol, index) => renderCard(symbol, index))}
           </div>
-        </div>
+            <WinScreen isOpened={winOpened} onClose={() => {restartGame()}}/>
         </div>
       );
     };
