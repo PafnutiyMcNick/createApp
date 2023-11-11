@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext } from "react"
 import { getAll } from "../api";
 import Game from "../components/game";
-import Navbar from "../components/navbar";
 
 
 const MainPage = () => {
+    const TurnCounterContext = createContext(0);
     // const [hello, setHello] = useState('');
 
     // useEffect(() => {
@@ -17,7 +17,6 @@ const MainPage = () => {
 
     return (
         <div>
-            <Navbar />
             <Game />
             {/* <h2>{hello}</h2> */}
         </div>

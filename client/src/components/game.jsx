@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './game.css'
+import Navbar from "../components/navbar";
 
 const generateCards = () => {
     const symbols = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -33,8 +34,8 @@ const Game = () => {
 
     useEffect(() => {
         if (flippedIndices.length === 2) {
-            const [firstIndex, secondIndex] = flippedIndices;
-            setTurnCounter(turnCounter + 1)
+          const [firstIndex, secondIndex] = flippedIndices;
+          setTurnCounter(turnCounter + 1)
             if (cards[firstIndex] === cards[secondIndex]) {
                 setMatchedPairs((prev) => [...prev, cards[firstIndex]]);
             }
@@ -63,8 +64,8 @@ const Game = () => {
     
       return (
         <div>
-          <h2>Ходов: {turnCounter}</h2>
-          <button onClick={resetGame}>Перезапустить игру</button>
+          <Navbar turnCounter={turnCounter} onRestart={resetGame} />
+          
           <div className="Game">
           <div className="card-container">
             {cards.map((symbol, index) => renderCard(symbol, index))}
