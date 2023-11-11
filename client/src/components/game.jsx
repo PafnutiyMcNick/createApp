@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './game.css'
 import WinScreen from "./WinScreen";
 import Navbar from "../components/navbar";
+import './game.css'
+import CountDown from "./CountDown";
 
 //генерация поля
 const generateCards = () => {
@@ -27,7 +28,8 @@ const Game = () => {
   const [flippedIndices, setFlippedIndices] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
-  const [winOpened, setWinOpened] = useState(false)
+  const [winOpened, setWinOpened] = useState(false);
+  const [win, setWin] = useState(true);
 
   //рестарт
   const resetGame = () => {
@@ -48,6 +50,40 @@ const Game = () => {
       setTimeout(() => setFlippedIndices([]), 1000);
     }
   }, [flippedIndices, cards]);
+
+  //таймер на партию
+
+  const [minutes, setMinutes] = useState(5);
+  const [seconds, setSeconds] = useState(59);
+
+  function changeMinutes() {
+    if (minutes > 0) {
+      setMinutes(minutes - 1)
+    }
+  }
+
+  setTimeout(() => {
+    changeMinutes()
+  }, 60000);
+
+  function changeSeconds() {
+    if (seconds > 0) {
+      setSeconds(seconds - 1)
+    }
+    if(seconds ===0 && minutes > 0){
+      setSeconds(59);
+    }
+  }
+
+  setTimeout(() => {
+    changeSeconds()
+  }, 1000);
+
+
+  setTimeout(() => {
+    setWin(false);
+    setWinOpened(true);
+  }, 60000 * 6);
 
   //вызов экрана победы
   useEffect(() => {
@@ -78,13 +114,15 @@ const Game = () => {
 
   return (
     <div>
-      <Navbar turnCounter={turnCounter} onRestart={resetGame} />
+      <Navbar turnCounter={turnCounter} seconds={seconds} minutes={minutes} onRestart={resetGame} />
 
       <div className="Game">
         <div className="card-container">
           {cards.map((symbol, index) => renderCard(symbol, index))}
         </div>
-        <WinScreen isOpened={winOpened} onClose={() => { resetGame() }} />
+        <WinScreen isOpened={winOpened} title={win ? 'Победа' : 'Луз'} onClose={() => {
+          resetGame()
+        }}/>
       </div>
     </div>
   );
