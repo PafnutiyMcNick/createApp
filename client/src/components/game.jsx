@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import WinScreen from "./WinScreen";
-import Navbar from "../components/navbar";
-import './game.css'
-import CountDown from "./CountDown";
+import NavBar from "./navbar";
+import cardOne from "../images/card_front-face_1.jpg";
+import cardTwo from "../images/card_front-face_2.jpg";
+import cardThree from "../images/card_front-face_3.jpg";
+import cardFour from "../images/card_front-face_4.jpg";
+import cardFive from "../images/card_front-face_5.jpg";
+import cardSix from "../images/card_front-face_6.jpg";
+import cardSeven from "../images/card_front-face_7.jpg";
+import cardEight from "../images/card_front-face_8.jpg";
+import cardBackFace from "../images/card_back-face.jpg";
+import './game.css';
 
 //генерация поля
 const generateCards = () => {
-  const symbols = [1, 2, 3, 4, 5, 6, 7, 8];
-  const allCards = symbols.concat(symbols);
-  return shuffleArray(allCards);
+    const symbols = [cardOne, cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight];
+    const allCards = symbols.concat(symbols);
+    return shuffleArray(allCards);
 };
 
 //шаффл массива
@@ -31,14 +39,13 @@ const Game = () => {
   const [winOpened, setWinOpened] = useState(false);
   const [win, setWin] = useState(true);
 
-  //рестарт
-  const resetGame = () => {
-    setCards(generateCards());
-    setFlippedIndices([]);
-    setMatchedPairs([]);
-    setTurnCounter(0);
-    setWinOpened(false)
-  };
+const resetGame = () => {
+  setCards(generateCards());
+  setFlippedIndices([]);
+  setMatchedPairs([]);
+  setTurnCounter(0);
+  setWinOpened(false)
+};
 
   useEffect(() => {
     if (flippedIndices.length === 2) {
@@ -85,8 +92,8 @@ const Game = () => {
     setWinOpened(true);
   }, 60000 * 6);
 
-  //вызов экрана победы
-  useEffect(() => {
+   //вызов экрана победы
+   useEffect(() => {
     if (matchedPairs.length === 8) {
       setWinOpened(true)
     }
@@ -100,29 +107,20 @@ const Game = () => {
 
   const renderCard = (symbol, index) => {
     const isFlipped = flippedIndices.includes(index) || matchedPairs.includes(symbol);
-    return (
-      <div
-        key={index}
-        className={`card ${isFlipped ? 'flipped' : ''}`}
-        onClick={() => handleCardClick(index)}
-      >
-        {isFlipped ? symbol : ' '}
-      </div>
-    );
+      return (
+        <img key={index} className={`memory__card ${isFlipped ? 'flip' : ''}`} onClick={() => handleCardClick(index)}
+        src={isFlipped? symbol: cardBackFace}      />
+      );
   };
-
 
   return (
     <div>
-      <Navbar turnCounter={turnCounter} seconds={seconds} minutes={minutes} onRestart={resetGame} />
-
-      <div className="Game">
-        <div className="card-container">
+      <NavBar turnCounter={turnCounter} seconds={seconds} minutes={minutes} onRestart={resetGame} />
+      <div className="main">
+        <div className="memory">
           {cards.map((symbol, index) => renderCard(symbol, index))}
         </div>
-        <WinScreen isOpened={winOpened} title={win ? 'Победа' : 'Луз'} onClose={() => {
-          resetGame()
-        }}/>
+        <WinScreen isOpened={winOpened} title={win ? 'Поздравляем!' : 'Сожалеем :('} subtitle={win ? 'Вы успешно завершили игру' : 'Вы не успели завершить игру'} onClose={resetGame}/>
       </div>
     </div>
   );

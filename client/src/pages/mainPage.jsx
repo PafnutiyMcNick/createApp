@@ -17,8 +17,7 @@ const MainPage = () => {
 
     return (
         <div>
-            <Game />
-            {/* <h2>{hello}</h2> */}
+          <Game />
         </div>
     )
 

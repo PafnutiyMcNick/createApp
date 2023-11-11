@@ -1,4 +1,4 @@
-.navbar {
+.nav-bar {
     width: 600px;
     margin: 40px auto;
     display: flex;
@@ -7,7 +7,7 @@
     align-items: center;
   }
   
-  .navbar__reset-button {
+  .nav-bar__reset-button {
     width: 40px;
     height: 40px;
     background-color: transparent;
@@ -18,18 +18,11 @@
     border: none;
   }
   
-  .navbar__counter-line {
+  .nav-bar__counter-line {
     font-size: 18px;
     color: black;
   }
-
-  .navbar__counter{
-    font-size: 18px;
-    color: black;
-}
-
-.navbar__timer {
-  color: black;
-  font-size: 22px;
-  font-weight: bold;
-}
+  
+  .nav-bar__counter {
+    font-weight: bold;
+  }
