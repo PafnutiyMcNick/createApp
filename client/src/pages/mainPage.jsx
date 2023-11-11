@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react"
 import { getAll } from "../api";
+import Game from "../components/game";
 
 
 const MainPage = () => {
-    const [hello, setHello] = useState('');
+    // const [hello, setHello] = useState('');
 
-    useEffect(() => {
-        getAll().then(data => {
-            setHello(data)
-        });
+    // useEffect(() => {
+    //     getAll().then(data => {
+    //         setHello(data)
+    //     });
 
-    }, '')
+    // }, '')
 
 
     return(
@@ -18,7 +19,8 @@ const MainPage = () => {
             <h1>
             start here
             </h1>
-            <h2>{hello}</h2>
+            <Game />
+            {/* <h2>{hello}</h2> */}
         </div>
     )
 
