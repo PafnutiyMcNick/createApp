@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './game.css'
+import WinScreen from "./WinScreen";
 
 const generateCards = () => {
     const symbols = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -22,6 +23,7 @@ const Game = () => {
     const [cards, setCards] = useState(generateCards());
     const [flippedIndices, setFlippedIndices] = useState([]);
     const [matchedPairs, setMatchedPairs] = useState([]);
+    const [winOpened, setWinOpened] = useState(false)
 
     useEffect(() => {
         if (flippedIndices.length === 2) {
@@ -32,6 +34,13 @@ const Game = () => {
             setTimeout(() => setFlippedIndices([]), 1000);
         }
     }, [flippedIndices, cards]);
+
+    //вызов экрана победы
+    useEffect(() => {
+        if (matchedPairs.length === 8) {
+            setWinOpened(true)
+        }
+    }, [matchedPairs])
 
     const handleCardClick = (index) => {
         if (flippedIndices.length < 2 && !flippedIndices.includes(index)) {
@@ -51,12 +60,21 @@ const Game = () => {
           </div>
         );
       };
+
+    //рестарт
+    const restartGame = () => {
+        setMatchedPairs([]);
+        setCards(shuffleArray);
+        cards.map((symbol, index) => renderCard(symbol, index));
+        setWinOpened(false)
+    }
     
       return (
         <div className="Game">
           <div className="card-container">
             {cards.map((symbol, index) => renderCard(symbol, index))}
           </div>
+            <WinScreen isOpened={winOpened} onClose={() => {restartGame()}}/>
         </div>
       );
     };
