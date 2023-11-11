@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './game.css'
 
 const generateCards = () => {
   const symbols = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -20,8 +21,24 @@ const shuffleArray = (array) => {
 
 const Game = () => {
     const cards = generateCards();
+    console.log(cards)
 
-  console.log(cards)
+    const renderCard = (symbol, index) => {
+        return (
+            <div key = {index}
+            className = 'card'
+            >
+            {symbol}
+            </div>
+        )
+    }
+
+    return(
+        <div>
+         {cards.map((symbol, index) => renderCard(symbol, index))}
+
+        </div>
+    )
 };
 
 export default Game;
