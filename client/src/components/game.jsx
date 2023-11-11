@@ -34,7 +34,7 @@ const Game = () => {
     }
 
     return(
-        <div>
+        <div className='card-container'>
          {cards.map((symbol, index) => renderCard(symbol, index))}
 
         </div>

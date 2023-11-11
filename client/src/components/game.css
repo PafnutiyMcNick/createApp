@@ -14,3 +14,10 @@
     border: 2px solid #333;
     cursor: pointer;
 }
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+    margin-top: 20px;
+  }
