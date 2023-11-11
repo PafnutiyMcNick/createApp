@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAll } from "../api";
 import Game from "../components/game";
+import Navbar from "../components/navbar";
 
 
 const MainPage = () => {
@@ -14,11 +15,9 @@ const MainPage = () => {
     // }, '')
 
 
-    return(
+    return (
         <div>
-            <h1>
-            start here
-            </h1>
+            <Navbar />
             <Game />
             {/* <h2>{hello}</h2> */}
         </div>
