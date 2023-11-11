@@ -17,11 +17,11 @@
 
 .card.flipped {
     background-color: #ccc;
-  }
+}
 
 .card-container {
     display: grid;
     grid-template-columns: repeat(4, 120px);
     gap: 10px;
     margin-top: 20px;
-  }
+}
