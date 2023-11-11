@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './game.css'
 import WinScreen from "./WinScreen";
+import NavBar from "./navBar";
+import cardOne from "../images/card_front-face_1.jpg";
+import cardTwo from "../images/card_front-face_2.jpg";
+import cardThree from "../images/card_front-face_3.jpg";
+import cardFour from "../images/card_front-face_4.jpg";
+import cardFive from "../images/card_front-face_5.jpg";
+import cardSix from "../images/card_front-face_6.jpg";
+import cardSeven from "../images/card_front-face_7.jpg";
+import cardEight from "../images/card_front-face_8.jpg";
+import cardBackFace from "../images/card_back-face.jpg";
 
 const generateCards = () => {
-    const symbols = [1, 2, 3, 4, 5, 6, 7, 8];
+    const symbols = [cardOne, cardTwo, cardThree, cardFour, cardFive, cardSix, cardSeven, cardEight];
     const allCards = symbols.concat(symbols);
     return shuffleArray(allCards);
 };
@@ -49,17 +59,12 @@ const Game = () => {
     };
 
     const renderCard = (symbol, index) => {
-        const isFlipped = flippedIndices.includes(index) || matchedPairs.includes(symbol);
+      const isFlipped = flippedIndices.includes(index) || matchedPairs.includes(symbol);
         return (
-          <div
-            key={index}
-            className={`card ${isFlipped ? 'flipped' : ''}`}
-            onClick={() => handleCardClick(index)}
-          >
-            {isFlipped ? symbol : ' '}
-          </div>
+          <img key={index} className={`memory__card ${isFlipped ? 'flip' : ''}`} onClick={() => handleCardClick(index)}
+          src={isFlipped? symbol: cardBackFace}      />
         );
-      };
+    };
 
     //рестарт
     const restartGame = () => {
@@ -70,11 +75,12 @@ const Game = () => {
     }
     
       return (
-        <div className="Game">
-          <div className="card-container">
+        <div className="main">
+          <NavBar onRestart={() => {restartGame()}}/>
+          <div className="memory">
             {cards.map((symbol, index) => renderCard(symbol, index))}
           </div>
-            <WinScreen isOpened={winOpened} onClose={() => {restartGame()}}/>
+          <WinScreen isOpened={winOpened} onClose={() => {restartGame()}}/>
         </div>
       );
     };

@@ -1,0 +1,28 @@
+.nav-bar {
+    width: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-bar__reset-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    background-image: url(../images/reset_icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+  }
+  
+  .nav-bar__counter-line {
+    font-size: 18px;
+    color: black;
+  }
+  
+  .nav-bar__counter {
+    font-weight: bold;
+  }
