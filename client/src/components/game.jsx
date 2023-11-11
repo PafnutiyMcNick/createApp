@@ -53,7 +53,7 @@ const Game = () => {
       };
     
       return (
-        <div className="App">
+        <div className="Game">
           <div className="card-container">
             {cards.map((symbol, index) => renderCard(symbol, index))}
           </div>
