@@ -37,7 +37,7 @@ const Game = () => {
   const [matchedPairs, setMatchedPairs] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
   const [win, setWin] = useState(false);
-  const [time, setTime] = useState(5); // 6 minutes
+  const [time, setTime] = useState(360); // 6 minutes
   const [gameOver, setGameOver] = useState(false);
   const [firstClick, setFirstClick] = useState(false);
 
@@ -46,13 +46,30 @@ const resetGame = () => {
   setFlippedIndices([]);
   setMatchedPairs([]);
   setTurnCounter(0);
-  setTime(5);
+  setTime(360);
   setGameOver(false);
   setFirstClick(false);
   
 };
 
+  //таймер на партию — запускаем по первому клику на карточку
   useEffect(() => {
+  let timerId;
+
+  if (firstClick) {
+    timerId = setInterval(() => {
+      setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+  }
+
+  return () => clearInterval(timerId);
+}, [firstClick, time]);
+
+  useEffect(() => {
+    //проверка на первый клик
+    if (flippedIndices.length === 1 && turnCounter === 0){
+      setFirstClick(true);
+    }
     if (flippedIndices.length === 2) {
       const [firstIndex, secondIndex] = flippedIndices;
       setTurnCounter(turnCounter + 1)
@@ -63,16 +80,6 @@ const resetGame = () => {
     }
   }, [flippedIndices, cards]);
 
-  //таймер на партию
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setTime((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
-    }, 1000);
-  
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []); 
   
   //отдельно отслеживаем, закончилось ли время, иначе путаница зависимостей и игра продолжается несмотря на конец времени
   useEffect(() => {
