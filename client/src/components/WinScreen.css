@@ -1,63 +1,63 @@
 .win-screen {
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: visibility 0s ease-in-out 1s, opacity 1s 0s;
-  }
-  
-  .win-screen__container {
-    width: 430px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-    padding: 34px 36px 37px;
-    box-sizing: border-box;
-    position: relative;
-  }
-  
-  .win-screen__title {
-    margin-block-start: 0;
-    margin-block-end: 30px;
-    color: #fec111;
-    font-size: 24px;
-    line-height: 1.2;
-    text-align: center;
-  }
-  
-  .win-screen__subtitle {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    color: #000;
-    font-size: 18px;
-    line-height: 1.2;
-    text-align: center;
-  }
-  
-  .win-screen__close-button {
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    background-image: url(../images/close_icon.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-    position: absolute;
-    top: -40px;
-    right: -40px;
-  }
-  
-  .win-screen_opened {
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s ease-in-out, opacity 1s;
-  }
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: visibility 0s ease-in-out 1s, opacity 1s 0s;
+}
+
+.win-screen__container {
+  width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  padding: 34px 36px 37px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.win-screen__title {
+  margin-block-start: 0;
+  margin-block-end: 30px;
+  color: #fec111;
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.win-screen__subtitle {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #000;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.win-screen__close-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-image: url(../images/close_icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+.win-screen_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s ease-in-out, opacity 1s;
+}
