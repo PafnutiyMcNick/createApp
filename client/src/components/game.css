@@ -7,18 +7,27 @@
 
 .memory {
   width: 60%;
-  max-width: 600px;
   aspect-ratio: 1/1;
   margin: 0 auto;
-  display: flex;
-  gap: 2%;
-  flex-flow: row wrap;
   perspective: 1000px;
+  display: grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.memory_four {
+  max-width: 600px;
+  gap: 2%;
+}
+
+.memory_six {
+  max-width: 940px;
+  gap: 4px;
+  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 .memory__card {
-  width: 23.5%;
-  height: 23.5%;
+  width: 130px;
+  height: 130px;
   position: relative;
   border-radius: 50%;
   background-color: rgb(254, 193, 17);
