@@ -68,6 +68,7 @@ const Game = () => {
   //вызов экрана победы
   useEffect(() => {
     if (matchedPairs.length === 8) {
+      setWin(true);
       setWinOpened(true);
     }
   }, [matchedPairs]);
