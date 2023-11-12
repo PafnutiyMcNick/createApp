@@ -99,8 +99,8 @@ const Game = () => {
   };
 
   const handleDataFromSettings = (data) => {
-    console.log ('handle', data.time )
     setTime(data.time);
+
     
   };
 
@@ -113,7 +113,7 @@ const Game = () => {
         onSettings={handleSettingsScreenClick}
       />
       <div className="main">
-        <div className="memory">{cards.map((symbol, index) => renderCard(symbol, index))}</div>
+        <div className="memory memory_four">{cards.map((symbol, index) => renderCard(symbol, index))}</div>
         <SettingsScreen
           isOpened={isSettingScreenOpen}
           onClose={handleSettingsScreenClose}
