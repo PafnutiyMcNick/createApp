@@ -21,14 +21,16 @@
   height: 23.5%;
   position: relative;
   border-radius: 50%;
-  background-color: rgb(96, 192, 230);
+  background-color: rgb(254, 193, 17);
   padding: 2%;
   box-sizing: border-box;
+  transform: rotateY(180deg);
 }
 
 .memory__card.flip {
-  transform: rotateY(180deg);
+  transform: scale(1);
   transition: transform 0.5s;
+  background-color: white;
   border: 0;
   border-radius: 10%;
 }

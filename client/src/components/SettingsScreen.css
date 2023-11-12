@@ -1,0 +1,107 @@
+.set-screen {
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: visibility 0s ease-in-out 1s, opacity 1s 0s;
+}
+
+.set-screen__container {
+  width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  padding: 34px 36px 37px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.set-screen__label {
+  margin-block-start: 0;
+  margin-block-end: 0px;
+  color: #fec111;
+  line-height: 1.2;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.set-screen__input {
+  margin-block-start: 0;
+  margin-block-end: 30px;
+  width: 40px;
+  color: black;
+  line-height: 1.2;
+  font-size: 14px;
+  padding: 0 0 2px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.set-screen__input {
+  margin-block-start: 0;
+  margin-block-end: 30px;
+  box-sizing: border-box;
+}
+
+.set-screen__subtitle {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  color: #000;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.set-screen__close-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-image: url(../images/close_icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+.set-screen__save-button {
+  width: 358px;
+  height: 50px;
+  background-color: #fec111;
+  margin: 18px auto 0;
+  border: none;
+  border-radius: 2px;
+  font-size: 18px;
+  line-height: 1.21;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  padding: 0;
+}
+
+.set-screen_opened {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s ease-in-out, opacity 1s;
+}
+
+@media screen and (max-width: 720px) {
+  .set-screen__save-button {
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+  }
+}
