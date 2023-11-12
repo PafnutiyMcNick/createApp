@@ -2,11 +2,10 @@ import React from 'react';
 import './navbar.css';
 
 const Navbar = ({ turnCounter, onRestart, onSettings, time }) => {
-  console.log('navbar:', turnCounter);
   return (
     <div className="navbar">
       <div className="navbar__counter-line">
-        Ходов: <span class="navbar__counter">{turnCounter}</span>
+        Ходов: <span className="navbar__counter">{turnCounter}</span>
       </div>
       <div className="navbar__timer">
         {Math.floor(time / 60)}:{(time % 60).toString().padStart(2, '0')}
