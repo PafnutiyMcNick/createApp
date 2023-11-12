@@ -1,7 +1,7 @@
 import React from 'react';
-import './WinScreen.css';
+import './endGameScreen.css';
 
-function WinScreen({ isOpened, onClose, title, subtitle }) {
+function EndGameScreen({ isOpened, onClose, title, subtitle }) {
   return (
     <div className={`win-screen ${isOpened? "win-screen_opened": ""}`}>
       <div className="win-screen__container">
@@ -9,7 +9,7 @@ function WinScreen({ isOpened, onClose, title, subtitle }) {
         <p className="win-screen__subtitle">{subtitle}</p>
           <button
             type="button"
-            class="win-screen__close-button button"
+            className="win-screen__close-button button"
             aria-label="Закрыть окно"
             onClick={onClose}
           ></button>
@@ -18,4 +18,4 @@ function WinScreen({ isOpened, onClose, title, subtitle }) {
   );
 }
 
-export default WinScreen;
+export default EndGameScreen;
