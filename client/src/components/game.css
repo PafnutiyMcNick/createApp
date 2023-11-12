@@ -6,28 +6,29 @@
 }
 
 .memory {
-  width: 600px;
-  height: 600px;
+  width: 60%;
+  max-width: 600px;
+  aspect-ratio: 1/1;
   margin: 0 auto;
   display: flex;
+  gap: 2%;
   flex-flow: row wrap;
   perspective: 1000px;
 }
 
 .memory__card {
-  width: 25%;
-  height: 25%;
-  transform: scale(1);
+  width: 23.5%;
+  height: 23.5%;
   position: relative;
-  transition: transform 0.5s;
   border-radius: 50%;
   background-color: rgb(96, 192, 230);
-  padding: 10px;
+  padding: 2%;
   box-sizing: border-box;
 }
 
 .memory__card.flip {
   transform: rotateY(180deg);
+  transition: transform 0.5s;
   border: 0;
-  border-radius: 5px;
+  border-radius: 10%;
 }

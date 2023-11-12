@@ -1,35 +1,45 @@
 .navbar {
-    width: 600px;
-    margin: 40px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar__reset-button {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    background-image: url(../images/reset_icon.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
-  }
-  
-  .navbar__counter-line {
-    font-size: 18px;
-    color: black;
-  }
+  width: 60%;
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .navbar__counter{
-    font-size: 18px;
-    color: black;
+.navbar__reset-button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-image: url(../images/reset_icon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
+.navbar__counter-line {
+  font-size: 18px;
+  color: black;
 }
 
 .navbar__timer {
   color: black;
   font-size: 22px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar__reset-button {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .navbar__reset-button {
+    width: 20px;
+    height: 20px;
+  }
 }
