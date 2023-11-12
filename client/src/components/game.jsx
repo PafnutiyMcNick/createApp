@@ -98,6 +98,12 @@ const Game = () => {
     );
   };
 
+  const handleDataFromSettings = (data) => {
+    console.log ('handle', data.time )
+    setTime(data.time);
+    
+  };
+
   return (
     <div>
       <NavBar
@@ -111,7 +117,7 @@ const Game = () => {
         <SettingsScreen
           isOpened={isSettingScreenOpen}
           onClose={handleSettingsScreenClose}
-          onSave={resetGame}
+          onSave={handleDataFromSettings}
         />
         <EndGameScreen
           isOpened={gameOver}
