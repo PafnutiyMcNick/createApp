@@ -15,6 +15,7 @@ const Game = () => {
   const [time, setTime] = useState(360); // 6 minutes
   const [gameOver, setGameOver] = useState(false);
   const [firstClick, setFirstClick] = useState(false);
+  const [isSettingScreenOpen, setSettingScreenOpen] = React.useState(false);
 
   const resetGame = () => {
     setCards(generateCards());
@@ -76,6 +77,14 @@ const Game = () => {
     }
   };
 
+  function handleSettingsScreenClick() {
+    setSettingScreenOpen(true);
+  }
+
+  function handleSettingsScreenClose() {
+    setSettingScreenOpen(false);
+  }
+
   const renderCard = (symbol, index) => {
     const isFlipped = flippedIndices.includes(index) || matchedPairs.includes(symbol);
     return (
@@ -90,10 +99,19 @@ const Game = () => {
 
   return (
     <div>
-      <NavBar turnCounter={turnCounter} onRestart={resetGame} time={time} />
+      <NavBar
+        turnCounter={turnCounter}
+        onRestart={resetGame}
+        time={time}
+        onSettings={handleSettingsScreenClick}
+      />
       <div className="main">
         <div className="memory">{cards.map((symbol, index) => renderCard(symbol, index))}</div>
-        <SettingsScreen isOpened={gameOver} onClose={resetGame} onSave={resetGame} />
+        <SettingsScreen
+          isOpened={isSettingScreenOpen}
+          onClose={handleSettingsScreenClose}
+          onSave={resetGame}
+        />
         <EndGameScreen
           isOpened={gameOver}
           title={win ? 'Поздравляем!' : 'Сожалеем :('}
