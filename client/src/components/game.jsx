@@ -7,6 +7,7 @@ import EndGameScreen from './endGameScreen';
 import './game.css';
 
 const Game = () => {
+
   const [cards, setCards] = useState(generateCards());
   const [flippedIndices, setFlippedIndices] = useState([]);
   const [matchedPairs, setMatchedPairs] = useState([]);

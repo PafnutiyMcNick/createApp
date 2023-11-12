@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SettingsScreen.css';
 
 function SettingsScreen({ isOpened, onClose, onSave }) {
+  const [selectValue, setSelectValue] = useState('four');
   return (
     <div className={`set-screen ${isOpened ? 'set-screen_opened' : ''}`}>
       <div className="set-screen__container">
@@ -13,18 +14,14 @@ function SettingsScreen({ isOpened, onClose, onSave }) {
           </label>
           <label className="set-screen__label">
             Выберите размер поля:
-            <input className="set-screen__radio" id="4x4" type="radio" name="field" value="4" />
-            <label className="set-screen__label" for="4x4">
-              4x4
-            </label>
-            <input className="set-screen__radio" id="6x6" type="radio" name="field" value="6" />
-            <label className="set-screen__label" for="6x6">
-              6x6
-            </label>
+            <select onChange={(evt)=> {setSelectValue(evt.target.options[evt.target.selectedIndex].value)}}>
+              <option value="four">4x4</option>
+              <option value="six">6x6</option>
+            </select>
           </label>
           <button
             type="button"
-            class="set-screen__save-button button"
+            className="set-screen__save-button button"
             aria-label="Сохранить изменения"
             onClick={onSave}
           >
@@ -33,7 +30,7 @@ function SettingsScreen({ isOpened, onClose, onSave }) {
         </form>
         <button
           type="button"
-          class="set-screen__close-button button"
+          className="set-screen__close-button button"
           aria-label="Закрыть окно"
           onClick={onClose}
         ></button>

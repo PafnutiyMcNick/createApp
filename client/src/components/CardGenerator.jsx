@@ -17,6 +17,7 @@ import card_16 from '../images/16.png';
 import card_17 from '../images/17.png';
 import card_18 from '../images/18.png';
 
+
 //генерация поля
 export const generateCards = () => {
   const symbols = [
@@ -39,7 +40,8 @@ export const generateCards = () => {
     card_17,
     card_18
   ];
-  const allCards = symbols.concat(symbols);
+  // const allCards = selectValue ==='four'? symbols.concat(symbols): symbols.concat(symbols);
+  const allCards = symbols.concat(symbols)
   return shuffleArray(allCards);
 };
 
@@ -54,3 +56,4 @@ const shuffleArray = array => {
 
   return shuffledArray;
 };
+
