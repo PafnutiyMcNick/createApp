@@ -8,15 +8,28 @@
   align-items: center;
 }
 
-.navbar__reset-button {
+.navbar__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.navbar__button {
   width: 40px;
   height: 40px;
   background-color: transparent;
-  background-image: url(../images/reset_icon.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border: none;
+}
+
+.navbar__reset-button {
+  background-image: url(../images/reset_icon.svg);
+}
+
+.navbar__settings-button {
+  background-image: url(../images/settings_icon.svg);
 }
 
 .navbar__counter-line {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import WinScreen from './WinScreen';
 import NavBar from './navbar';
+import SettingsScreen from './SettingsScreen';
 import { generateCards } from './CardGenerator';
-import cardBackFace from '../images/card_back-face.jpg';
+import cardBackFace from '../images/back.png';
 import './game.css';
 
 const Game = () => {
@@ -101,6 +102,7 @@ const Game = () => {
           subtitle={win ? 'Вы успешно завершили игру' : 'Вы не успели завершить игру'}
           onClose={resetGame}
         />
+        <SettingsScreen isOpened={winOpened} onClose={resetGame} onSave={resetGame} />
       </div>
     </div>
   );
